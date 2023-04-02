@@ -1,4 +1,5 @@
-import { faker } from "@faker-js/faker";
+import {faker} from "@faker-js/faker";
+
 import {
   ChatCircleDots,
   Gear,
@@ -183,7 +184,7 @@ const Chat_History = [
     type: "msg",
     subtype: "img",
     message: "Here You Go",
-    img: faker.image.abstract(),
+    img: faker.image.avatar(),
     incoming: true,
     outgoing: false,
   },
@@ -203,9 +204,16 @@ const Chat_History = [
   },
   {
     type: "msg",
+    subtype: "doc",
+    message: "Yes sure, here you go.",
+    incoming: false,
+    outgoing: true,
+  },
+  {
+    type: "msg",
     subtype: "link",
-    preview: faker.image.cats(),
-    message: "Yep, I can also do that",
+    preview: faker.image.avatar(),
+    message: "Yep, I can also do that , Hehe Take it Hehe YO Yo",
     incoming: true,
     outgoing: false,
   },
@@ -214,6 +222,14 @@ const Chat_History = [
     subtype: "reply",
     reply: "This is a reply",
     message: "Yep, I can also do that",
+    incoming: false,
+    outgoing: true,
+  },
+  {
+    type: "msg",
+    subtype: "link",
+    preview: faker.image.avatar(),
+    message: "Yep, I can also do that , Hehe Take it Hehe YO Yo",
     incoming: false,
     outgoing: true,
   },

@@ -3,6 +3,8 @@ import { Box, Stack } from "@mui/material";
 
 import Header from "./Header";
 import Footer from "./Footer";
+import Messages from "./Messages";
+import Scrollbars from "react-custom-scrollbars";
 
 const Conversation = () => {
   return (
@@ -11,7 +13,11 @@ const Conversation = () => {
       <Header></Header>
 
       {/* CHAT */}
-      <Box sx={{ flexGrow: 1, width: "100%" }}>Chat</Box>
+      <Box sx={{ flexGrow: 1, height: "100%", width: "100%" }}>
+        <Scrollbars autoHide={true} autoHideTimeout={500}>
+          <Messages></Messages>
+        </Scrollbars>
+      </Box>
 
       {/* INPUTBAR */}
       <Footer></Footer>
