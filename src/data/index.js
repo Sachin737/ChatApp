@@ -127,6 +127,26 @@ const ChatList = [
     pinned: false,
     online: false,
   },
+  {
+    id: 8,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    msg: faker.music.songName(),
+    time: "08:12",
+    unread: 0,
+    pinned: false,
+    online: false,
+  },
+  {
+    id: 9,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    msg: faker.music.songName(),
+    time: "08:32",
+    unread: 0,
+    pinned: false,
+    online: true,
+  },
 ];
 
 const Chat_History = [
