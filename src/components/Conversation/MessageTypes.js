@@ -6,8 +6,14 @@ import {
   Typography,
   useTheme,
   IconButton,
+  MenuItem,
+  Menu,
 } from "@mui/material";
-import { DownloadSimple, Image } from "phosphor-react";
+import {
+  DotsThreeVertical,
+  DownloadSimple,
+  Image,
+} from "phosphor-react";
 import React from "react";
 
 const Timeline = ({ el }) => {
@@ -32,7 +38,7 @@ const TextMessage = ({ el }) => {
   return (
     <Stack
       direction={"row"}
-      alignItems={"center"}
+      // alignItems={"center"}
       justifyContent={el.incoming ? "start" : "end"}
     >
       <Box
@@ -53,6 +59,7 @@ const TextMessage = ({ el }) => {
           {el.message}
         </Typography>
       </Box>
+      <MessageOptions />
     </Stack>
   );
 };
@@ -62,7 +69,7 @@ const ImageMessage = ({ el }) => {
   return (
     <Stack
       direction={"row"}
-      alignItems={"center"}
+      // alignItems={"center"}
       justifyContent={el.incoming ? "start" : "end"}
     >
       <Box
@@ -90,6 +97,7 @@ const ImageMessage = ({ el }) => {
           </Typography>
         </Stack>
       </Box>
+      <MessageOptions />
     </Stack>
   );
 };
@@ -99,7 +107,7 @@ const ReplyMessage = ({ el }) => {
   return (
     <Stack
       direction={"row"}
-      alignItems={"center"}
+      // alignItems={"center"}
       justifyContent={el.incoming ? "start" : "end"}
     >
       <Box
@@ -129,7 +137,7 @@ const ReplyMessage = ({ el }) => {
           </Stack>
 
           <Divider width="100%"></Divider>
-          
+
           <Typography
             variant="body2"
             color={el.incoming ? theme.palette.text : "white"}
@@ -138,6 +146,7 @@ const ReplyMessage = ({ el }) => {
           </Typography>
         </Stack>
       </Box>
+      <MessageOptions />
     </Stack>
   );
 };
@@ -147,7 +156,7 @@ const LinkMessage = ({ el }) => {
   return (
     <Stack
       direction={"row"}
-      alignItems={"center"}
+      // alignItems={"center"}
       justifyContent={el.incoming ? "start" : "end"}
     >
       <Box
@@ -201,6 +210,7 @@ const LinkMessage = ({ el }) => {
           </Stack>
         </Stack>
       </Box>
+      <MessageOptions />
     </Stack>
   );
 };
@@ -210,7 +220,7 @@ const DocMessage = ({ el }) => {
   return (
     <Stack
       direction={"row"}
-      alignItems={"center"}
+      // alignItems={"center"}
       justifyContent={el.incoming ? "start" : "end"}
     >
       <Box
@@ -260,7 +270,69 @@ const DocMessage = ({ el }) => {
           </Typography>
         </Stack>
       </Box>
+      <MessageOptions />
     </Stack>
+  );
+};
+
+const Message_options = [
+  {
+    title: "Reply",
+  },
+  {
+    title: "React to message",
+  },
+  {
+    title: "Forward message",
+  },
+  {
+    title: "Star message",
+  },
+  {
+    title: "Report",
+  },
+  {
+    title: "Delete Message",
+  },
+];
+
+const MessageOptions = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <>
+      <DotsThreeVertical
+        cursor={"pointer"}
+        size={20}
+        id="basic-button"
+        aria-controls={open ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+      />
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        <Stack>
+          {Message_options.map((el) => (
+            <MenuItem onClick={handleClick}>{el.title}</MenuItem>
+          ))}
+        </Stack>
+      </Menu>
+    </>
   );
 };
 
@@ -271,4 +343,5 @@ export {
   ImageMessage,
   ReplyMessage,
   LinkMessage,
+  MessageOptions,
 };
