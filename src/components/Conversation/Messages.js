@@ -30,7 +30,6 @@ const Messages = () => {
               return <TextMessage el={el} />;
             }
           }
-          return <></>;
         })}
       </Stack>
     </Box>
